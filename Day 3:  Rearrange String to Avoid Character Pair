@@ -1,0 +1,14 @@
+class Solution {
+    public String rearrangeString(String s, char x, char y) {
+        StringBuilder ans=new StringBuilder();
+        int cx=0,cy=0;
+          for(char ch:s.toCharArray()){
+              if(ch==x) cx++;
+              else if(ch==y) cy++;
+              else ans.append(ch);
+          }
+        while(cy-->0) ans.append(y);
+        while(cx-->0) ans.append(x);
+        return ans.toString();
+    }
+}
