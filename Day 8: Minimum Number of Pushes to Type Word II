@@ -1,0 +1,16 @@
+class Solution{
+    public int minimumPushes(String word) {
+        HashMap<Character,Integer> s=new HashMap<>();
+        for(int i=0;i<word.length();i++){
+            char ch=word.charAt(i);
+            s.put(ch,s.getOrDefault(ch,0)+1);
+        }
+        ArrayList<Integer> list=new ArrayList<>(s.values());
+        Collections.sort(list,Collections.reverseOrder());
+        int count=0;
+        for(int i=0;i<s.size();i++){
+            count+=(i/8+1)*list.get(i);
+        }
+        return count;
+    }
+}
