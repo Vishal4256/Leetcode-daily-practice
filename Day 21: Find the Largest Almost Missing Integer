@@ -1,7 +1,7 @@
 class Solution {
     public int largestInteger(int[] nums, int k) {
         int n=nums.length;
-        int counts=0; int countl=0;
+        int counts=0;int countl=0;
         if(n==k) return Arrays.stream(nums).max().getAsInt();
         if(k==1){
             int ans=-1;
