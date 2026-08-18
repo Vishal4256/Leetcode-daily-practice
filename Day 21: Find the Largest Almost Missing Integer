@@ -1,0 +1,36 @@
+class Solution {
+    public int largestInteger(int[] nums, int k) {
+        int n=nums.length;
+        int counts=0; int countl=0;
+        if(n==k) return Arrays.stream(nums).max().getAsInt();
+        if(k==1){
+            int ans=-1;
+            for(int i=0;i<n;i++){
+                int count=0;
+                for(int j=0;j<n;j++){
+                    if(nums[i]==nums[j])
+                        count++;
+                }
+                if(count==1)
+                    ans=Math.max(ans,nums[i]);
+                }
+            return ans;
+        }
+        for(int i=1;i<n;i++){
+            if(nums[0]==nums[i]){
+                counts++;
+                break;
+            }
+        }
+        for(int i=0;i<n-1;i++){
+            if(nums[n-1]==nums[i]){
+                countl++;
+                break;
+            }
+        }
+        if(counts==0 && countl==0) return Math.max(nums[0],nums[n-1]);
+        if(counts>0 && countl==0) return nums[n-1];
+        if(countl>0 && counts==0) return nums[0];
+        return -1;
+    }
+}
